@@ -1,0 +1,23 @@
+mat-toolbar-row
+{
+  background-color:#00acc1;
+  border: none;
+  color: white;
+}
+
+mat-icon{
+  color:#35536b;
+  vertical-align:middle;
+  font-size:30px;
+  
+}
+ul li {
+    list-style: none;
+  }
+ul li .mat-search-bar{
+
+  align-items: flex-end;
+  vertical-align: middle;
+}
+
+  
