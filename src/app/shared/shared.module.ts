@@ -20,6 +20,7 @@ import { PieComponent } from './widget/pie/pie.component';
 import { MatDividerModule } from '@angular/material/divider';
 
 
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -28,6 +29,7 @@ import { MatDividerModule } from '@angular/material/divider';
     AreaComponent,
     CardComponent,
     PieComponent
+  
   ],
   imports: [
     CommonModule,
@@ -49,6 +51,7 @@ import { MatDividerModule } from '@angular/material/divider';
     AreaComponent,
     CardComponent,
     PieComponent
+   
   ]
 })
 export class SharedModule { }

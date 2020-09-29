@@ -1,0 +1,573 @@
+var searchFor = '';
+$(document).ready(function() {
+    if($('.nsb-ticket:visible').length==0){
+    	$('.new-search-block').addClass('ticketFocus noLine');
+    }
+
+	var isLoggdIn = $('#isloggedin').attr('value');
+
+	$('#missingCateg').hide();
+	$(document).on('click', '.topicUrl', function(e) {
+		if ($(this).attr('href') == '#') {
+			$('.nsb-2-suggestbox3').hide();
+			$('.nsb-2-suggestbox2').hide();
+			$('.fixed-overlay').addClass('hyperZindex');
+			$('#missingCateg').fadeIn();
+			return false;
+		}
+	});
+
+	$(document).on('click', '.closeButton', function(e) {
+		$('#missingCateg').fadeOut();
+		setTimeout(function() {
+			closeSearchPop();
+		},300);
+		return false;
+	});
+
+	$(document).click(function() {
+		$('.headerRightNav').hide();
+	});
+
+	$('.nsb-1').focus(function() {
+		firstTBfocus();
+	});
+	//Hide school or pre school if user city is not in Bnagalore,Mumbai,Chennai
+	//hideSearchSchoolForCities($(".nsb-1").val());
+	var searchCityafter = '';
+	$(document).on('keyup', '#searchCity', function(e) {
+		$('body').css('overflow', 'hidden');
+		var searchCitybefore = $('#searchCity').val();
+		var searchCitylenght = $('#searchCity').val().length;
+		if (searchCitylenght > 0) {
+			if (searchCityafter != searchCitybefore && (e.which != 40 && e.which != 38)) {
+				ajaxliSelected = 0;
+				ajaxCatliselected = 0;
+				searchCityafter = $('#searchCity').val();
+				$('#searchCity').val();
+				$('#ajaxcities').show();
+				$('#defaultcities').hide();
+				$.ajax({
+					type: 'POST',
+					data: {
+						q: $('#searchCity').val()
+					},
+					url: '/locality/ajaxLocalityCity',
+					success: function(msg) {
+						$('#ajaxcities').html(msg);
+					}
+				});
+			}
+		}else {
+			$('#defaultcities').show();
+			$('#ajaxcities').hide();
+		}
+	});
+
+	$(document).on('click', '.allLocations p', function() {
+
+		var linetext = $(this).text();
+		if (linetext.indexOf('All of') != -1) {
+			linetext = linetext.slice(7);
+		}else if ($(this).find('.hideAlways').length == 0) {
+			linetext = $(this).text();
+		}else {
+			linetext = $(this).find('.hideAlways').html();
+		}
+		changeOnlineOption(linetext);
+		secondTBfocus();
+		$('.nsb-2').focus();
+	});
+
+	// click event for dynamically created element
+	$(document).on('click', '#ajaxcities p', function() {
+		var linetext2 = $(this).text();
+		$('.nsb-1').attr('value', linetext2);
+		secondTBfocus();
+		$('.nsb-2').focus();
+	});
+
+	$('.nsb-2-suggestbox p').on('click', function() {
+		var linetext2 = $(this).text();
+		var linePara = $(this).attr('id');
+		searchFor = linePara;
+		if (searchFor == 'SCHOOL' || searchFor == 'PRE_SCHOOL') {
+			if (searchFor == 'SCHOOL') {
+				window.location.href = '/school/search?topicId=573&searchCity=' + $('.nsb-1').val();
+			}else {
+				window.location.href = '/school/search?topicId=580&searchCity=' + $('.nsb-1').val();
+
+			}
+			return;
+		}
+		var selectdCity = $('.nsb-1').val();
+		if (selectdCity == 'Online Services') {
+			selectdCity = 'Online';
+		}
+		var localityPre;
+		if (selectdCity.indexOf(',') > -1) {
+			localityPre = selectdCity.substring(0, selectdCity.indexOf(',')).trim();
+			selectdCity = selectdCity.substring(selectdCity.indexOf(',') + 1, selectdCity.length).trim();
+		}
+		$('#searchFor').val(linePara);
+		$('.nsb-2').attr('placeholder', 'Search or Select from the list below');
+		$('.nsb-ticket').show();
+		$('.nsb-ticket p').text(linetext2);
+		$('.nsb-2-suggestbox').hide();
+		$('.nsb-2-suggestbox3').show();
+		$('.new-search-block').removeClass('ticketFocus');
+		$('.new-search-block').addClass('ticketNsearch');
+		$('.nsb-2-suggestbox3').load('/general/renderSearchTopics?searchFor='+ searchFor + '&city='+ selectdCity);
+	});
+
+	// when user starts typing on the second textbox
+	var searchCategoryafter = '';
+	var searchCategorybefore = '';
+	$('.nsb-2').keyup(function(e) {
+		$('.fixed-overlay').removeClass('hyperZindex');
+		var searchCategorybefore = $('.nsb-2').val();
+		var nsb2Length = $('.nsb-2').val().length;
+		if (nsb2Length > 0) {
+
+			if (searchCategoryafter != searchCategorybefore && (e.which != 40 && e.which != 38)) {
+				searchCategoryafter = $('.nsb-2').val();
+				$('.nsb-2-suggestbox').hide();
+				$('.nsb-2-suggestbox2').show();
+				$('.nsb-2-suggestbox3').hide();
+				var selectdCity = $('.nsb-1').val();
+				console.log(selectdCity);
+				var localityPre;
+				if (selectdCity.indexOf(',') > -1) {
+					if (selectdCity.indexOf('(') > -1){
+						localityPre = selectdCity.substring(selectdCity.indexOf('(')+1, selectdCity.indexOf(',')).trim();
+						selectdCity = selectdCity.substring(selectdCity.indexOf(',') + 1, selectdCity.length-1).trim();
+					}else{
+						selectdCity = selectdCity.substring(selectdCity.indexOf(',') + 1, selectdCity.length).trim();
+					}
+				}
+				$.ajax({
+					type: 'GET',
+					data: {
+						q: $('.nsb-2').val().replace(/ {2,}/ , ' '),//this will remove the extra white spaces between words
+						city: selectdCity,
+						localityInf: localityPre,
+						searchFor: searchFor
+					},
+					url: '/general/searchContentAJAX',
+					success: function(msg) {
+						$('#ajaxcategory').html(msg);
+					}
+				});
+			}
+		} else {
+			var tickettext = $('.nsb-ticket p').text();
+			var lengthoftext = tickettext.length;
+			if (lengthoftext > 0) {
+				$('.nsb-2-suggestbox').hide();
+				$('.nsb-2-suggestbox2').hide();
+				$('.nsb-2-suggestbox3').show();
+			} else {
+				$('.nsb-2-suggestbox').show();
+				$('.new-search-block').addClass('locNSearch');
+				$('.nsb-2-suggestbox2').hide();
+				$('.nsb-2-suggestbox3').hide();
+			}
+		}
+	});
+
+	// click on ticket
+	$('.nsb-ticket').click(function() {
+		$('.new-search-block').removeClass('noLine');
+		$('.new-search-block').removeClass('locNSearch');
+		$('.new-search-block').removeClass('locNticketNSearch');
+		$('.new-search-block').removeClass('ticketNsearch');
+		$('.new-search-block').addClass('ticketFocus');
+		$('.new-search-block').addClass('searchVisible');
+		$('.fixed-overlay').show();
+		$('.nsb-2-suggestbox').show();
+		$('.nsb-1-suggestbox').hide();
+		$('.nsb-2-suggestbox2').hide();
+		$('.nsb-2-suggestbox3').hide();
+		$('.nsb-2').attr('placeholder', 'Search...');
+		$('.nsb-ticket').hide();
+		$('.nsb-ticket p').text('');
+		$('#searchFor').val('');
+		searchFor = '';
+	});
+
+
+	$('.nsb-2').on('focus click', function() {
+		$('.fixed-overlay').removeClass('hyperZindex');
+		secondTBfocus();
+		$('.nsb-2-suggestbox3').load('/general/renderSearchTopics?searchFor='+ searchFor);
+		if ($('#searchFor').val() == undefined || $('#searchFor').val() == '') {
+			$('#STUDENT').trigger('click');
+		}else {
+			$('#' + $('#searchFor').val()).trigger('click');
+		}
+
+		$('.nsb-2-suggestbox3').show();
+		$('.nsb-2-suggestbox').hide();
+		$('.nsb-1-suggestbox').hide();
+		$('.nsb-search-button').hide();
+		$('.nsb-2').addClass('topRightRound2px');
+		if (isLoggdIn == 'false') {
+			$('.nsb-ticket').hide();
+			$('.nsb-2').css({'width': '381px'});
+		}
+	}
+
+	);
+
+	// close the overlay
+	$('.fixed-overlay').click(function() {
+		closeSearchPop();
+	});
+
+	function secondTBfocus() {
+		$('.new-search-block').removeClass('noLine');
+		$('.new-search-block').removeClass('locNSearch');
+		$('.new-search-block').removeClass('locNticketNSearch');
+		$('.new-search-block').removeClass('ticketFocus');
+		$('.new-search-block').addClass('ticketNsearch');
+		$('.new-search-block').addClass('searchVisible');
+		$('.nsb-1-suggestbox').hide();
+		$('.fixed-overlay').show();
+		var inp = $('.nsb-1').attr('value');
+		if (jQuery.trim(inp).length < 1) {
+			$('.nsb-1').focus();
+			$('.nsb-1-suggestbox').show();
+		} else {
+			var tickettext = $('.nsb-ticket p').text();
+			var lengthoftext = tickettext.length;
+			if (lengthoftext > 0) {
+				$('.nsb-2-suggestbox2').hide();
+				$('.nsb-2-suggestbox3').show();
+			} else {
+				$('.nsb-2-suggestbox').show();
+			}
+		}
+	}
+;
+	//This to select subcategory from popular category
+	$(document).on('click', '#nsb-tab-content ul li a', function() {
+		var realTopicName = $(this).attr('id');
+		$('#keyword').val(realTopicName);
+		submitForm();
+	});
+
+	function closeSearchPop() {
+		$('.nsb-2').attr('placeholder', 'Search...');
+		
+		$('.fixed-overlay').hide();
+		$('.nsb-1-suggestbox').hide();
+		$('.nsb-2-suggestbox').hide();
+		$('.nsb-2-suggestbox2').hide();
+		$('.nsb-2-suggestbox3').hide();
+		$('.nsb-search-button').show();
+		$('.new-search-block').removeClass('locNSearch');
+		$('.new-search-block').removeClass('locNticketNSearch');
+		$('.new-search-block').removeClass('searchVisible');
+		$('.new-search-block').removeClass('ticketFocus');
+		$('.new-search-block').removeClass('ticketNsearch');
+		if($('.nsb-ticket:visible').length==0){
+	    	$('.new-search-block').addClass('ticketFocus noLine');
+	    }
+	}
+
+	// code for the tab navigation inside search bar
+	$('#nsb-tab-content .categoryList').hide();
+	$('#nsb-tab-content .categoryList:first').show();
+
+	$(document).on('mouseover', '#nsb-nav li', function() {
+		$('#nsb-nav li p').removeClass('active');
+		$(this).find('p').addClass('active');
+		$('#nsb-tab-content .categoryList').hide();
+
+		var indexer = $(this).index(); // gets the current index of (this)
+										// which is #nav li
+		$('#nsb-tab-content .categoryList:eq(' + indexer + ')').stop().fadeIn('fast'); // uses whatever
+																// index the
+																// link has to
+																// open the
+																// corresponding
+																// box
+		//var objHeight = $('#nsb-tab-content div:eq(' + indexer + ')').height();
+		//$('.nsb-2-suggestbox3').stop().animate({'height':objHeight});
+	});
+	//This is basically when user select vieall topic for a main category dropdown
+	$(document).on('click', '.viewAll', function() {
+		var getTheId = $(this).attr('id');
+		var url = '/general/search?'+ getTheId + '&searchCity='+ $('.nsb-1').val() + '&searchFor='+ searchFor;
+		window.location.href = url;
+		return;
+	});
+
+	changeOnlineOption($('.nsb-1').val());
+
+	//get the property
+	//TODO: This functionality has to be implemented for all search boxes
+	// https://app.asana.com/0/1936543972589/16416874047857
+
+	var ajaxliSelected;
+	var defualtliSelected;
+	var liSelected;
+	var scrolled = 0;
+	var li;
+	var listhightlight = false;
+	var listcathighlight = false;
+
+	$(document).on('keyup', '#searchCity', function(e) {
+		var searchCitylength = $('#searchCity').val().length;
+		if (searchCitylength > 0) {
+			li = $('#ajaxcities p');
+			ajaxcities(e);
+		}else {
+			li = $('#defaultcities p');
+			defaultcities(e);
+		}
+	});
+
+	function ajaxcities(e) {
+		if (e.which === 40) {
+	        if (ajaxliSelected) {
+	        	ajaxliSelected.removeClass('listhighlight');
+	            next = ajaxliSelected.next('p');
+	            if (next.length > 0) {
+	            	ajaxliSelected = next.addClass('listhighlight');
+	            	$('.nsb-1-suggestbox-cities').animate({
+		                scrollTop: $('.nsb-1-suggestbox-cities').scrollTop() + $('.listhighlight').prop('scrollHeight')
+		            },1);
+	            }else {
+	            	ajaxliSelected = li.eq(0).addClass('listhighlight');
+	            	$('.nsb-1-suggestbox-cities').animate({
+		                scrollTop: 0
+		            },1);
+	            }
+
+	            //$('.listhighlight')[0].scrollIntoView({ duration: "slow", direction: "y", complete: function(){ alert("Done"); } });
+	        }else {
+	        	ajaxliSelected = li.eq(0).addClass('listhighlight');
+	        	$('.nsb-1-suggestbox-cities').animate({
+	                scrollTop: 0
+	            },1);
+	        }
+	        listhightlight = true;
+	        var thetext = ajaxliSelected.text();
+            $('.nsb-1').attr('value', thetext);
+	    }else if (e.which === 38) {
+	        if (ajaxliSelected) {
+	        	ajaxliSelected.removeClass('listhighlight');
+	            next = ajaxliSelected.prev('p');
+	            if (next.length > 0) {
+	            	ajaxliSelected = next.addClass('listhighlight');
+	            	$('.nsb-1-suggestbox-cities').animate({
+		            	scrollTop: $('.nsb-1-suggestbox-cities').scrollTop() - $('.listhighlight').prop('scrollHeight')
+		            },1);
+	            }else {
+	            	ajaxliSelected = li.last().addClass('listhighlight');
+	            	$('.nsb-1-suggestbox-cities').animate({
+		                scrollTop: $('#ajaxcities').height()
+		            },1);
+	            }
+
+	        }else {
+	        	ajaxliSelected = li.last().addClass('listhighlight');
+	        	$('.nsb-1-suggestbox-cities').animate({
+	                scrollTop: $('#ajaxcities').height()
+	            },1);
+	        }
+	        var thetext = ajaxliSelected.text();
+            $('.nsb-1').attr('value', thetext);
+	        listhightlight = true;
+	    }else if (e.which === 13) {
+	    	var linetext2 = $('.nsb-1').val();
+			secondTBfocus();
+			$('.nsb-2').focus();
+	    }
+	}
+
+	function defaultcities(e) {
+		if (e.which === 40) {
+	        if (defualtliSelected) {
+	        	defualtliSelected.removeClass('listhighlight');
+	            next = defualtliSelected.next('p');
+	            if (next.length > 0) {
+	            	defualtliSelected = next.addClass('listhighlight');
+
+	            }else {
+	            	defualtliSelected = li.eq(0).addClass('listhighlight');
+	            }
+	        }else {
+	        	defualtliSelected = li.eq(0).addClass('listhighlight');
+
+	        }
+	        var thetext = defualtliSelected.text();
+            $('.nsb-1').attr('value', thetext);
+	        listhightlight = true;
+	    }else if (e.which === 38) {
+	        if (defualtliSelected) {
+	        	defualtliSelected.removeClass('listhighlight');
+	            next = defualtliSelected.prev('p');
+	            if (next.length > 0) {
+	            	defualtliSelected = next.addClass('listhighlight');
+
+	            }else {
+	            	defualtliSelected = li.last().addClass('listhighlight');
+	            }
+	        }else {
+	        	defualtliSelected = li.last().addClass('listhighlight');
+
+	        }
+	        var thetext = defualtliSelected.text();
+            $('.nsb-1').attr('value', thetext);
+	        listhightlight = true;
+	    }else if (e.which === 13) {
+			changeOnlineOption($('.nsb-1').val());
+			secondTBfocus();
+			$('.nsb-2').focus();
+	    }
+	}
+
+	var ajaxCatliselected;
+	var ajaxcategory;
+	var href;
+	$(document).on('keyup', '.nsb-2', function(e) {
+		var searchCatlength = $('.nsb-2').val().length;
+		if (searchCatlength > 0) {
+			li = $('.nsb-2-suggestbox2 p');
+			if (e.which === 40) {
+		        if (ajaxCatliselected) {
+		        	ajaxCatliselected.removeClass('listcathighlight');
+		            next = ajaxCatliselected.next('p');
+		            nexthref = ajaxCatliselected.next('p').children('a');
+		            href = ajaxCatliselected.next('p').children('a').attr('href');
+		            selectvalue = nexthref.text();
+		            if (next.length > 0) {
+		            	ajaxCatliselected = next.addClass('listcathighlight');
+		                $('.nsb-2').attr('value', selectvalue);
+		                $('.nsb-2-suggestbox2').animate({
+			                scrollTop: $('.nsb-2-suggestbox2').scrollTop() + $('.listcathighlight').prop('scrollHeight')
+			            },1);
+		            }else {
+		            	ajaxCatliselected = li.eq(0).addClass('listcathighlight');
+		            	$('.nsb-2-suggestbox2').animate({
+			                scrollTop: 0
+			            },1);
+		            }
+		           // $('.listcathighlight')[0].scrollIntoView(true);
+		        }else {
+		        	ajaxCatliselected = li.eq(0).addClass('listcathighlight');
+		        	$('.nsb-2').attr('value', li.eq(0).children('a').text());
+		        	href = li.eq(0).children('a').attr('href');
+		        }
+		        listcathighlight = true;
+		    }else if (e.which === 38) {
+		        if (ajaxCatliselected) {
+		        	ajaxCatliselected.removeClass('listcathighlight');
+		            next = ajaxCatliselected.prev('p');
+		            nexthref = ajaxCatliselected.prev('p').children('a');
+		            href = ajaxCatliselected.next('p').children('a').attr('href');
+		            selectvalue = nexthref.text();
+		            if (next.length > 0) {
+		            	ajaxCatliselected = next.addClass('listcathighlight');
+		                $('.nsb-2').attr('value', selectvalue);
+		                $('.nsb-2-suggestbox2').animate({
+			            	scrollTop: $('.nsb-2-suggestbox2').scrollTop() - $('.listcathighlight').prop('scrollHeight')
+			            },1);
+		            }else {
+		            	ajaxCatliselected = li.last().addClass('listcathighlight');
+		            	$('.nsb-2-suggestbox2').animate({
+			                scrollTop: $('#ajaxcategory').height()
+			            },1);
+		            }
+		            //$('.listcathighlight')[0].scrollIntoView(true);
+		        }else {
+		        	ajaxCatliselected = li.last().addClass('listcathighlight');
+		        	$('.nsb-2').attr('value', li.last().children('a').text());
+		        	href = li.last().children('a').attr('href');
+		        }
+		        listcathighlight = true;
+		    }else if (e.which === 13) {
+		    	if (listcathighlight == true) {
+		    		window.location.href = href;
+		    	}
+		    }
+		}
+	});
+
+});//document ready closes herer
+
+//Hide school or pre school if user city is not in Bnagalore,Mumbai,Chennai
+function hideSearchSchoolForCities(city) {
+	if (city) {
+		city = city.trim();
+	}
+	if (city && (city.indexOf('Bangalore') > -1 || city.indexOf('Chennai') > -1 || city.indexOf('Mumbai') > -1 ||
+		city.indexOf('Delhi') > -1 || city.indexOf('Kolkata') > -1 || city.indexOf('Hyderabad') > -1 || city.indexOf('Pune') > -1 || city.indexOf('Ahmedabad') > -1)) {
+		$('#SCHOOL').show();
+		$('#PRE_SCHOOL').show();
+	}else {
+		$('#SCHOOL').hide();
+		$('#PRE_SCHOOL').hide();
+	}
+}
+
+function firstTBfocus() {
+	$('.new-search-block').removeClass('noLine');
+	if($('.nsb-ticket:visible').length>0){
+		$('.new-search-block').removeClass('locNSearch');
+		$('.new-search-block').addClass('locNticketNSearch');
+	}else{
+		$('.new-search-block').removeClass('locNticketNSearch');
+		$('.new-search-block').addClass('locNSearch');
+	}
+	$('.new-search-block').removeClass('ticketNsearch');
+	$('.new-search-block').removeClass('ticketFocus');
+	$('.new-search-block').addClass('searchVisible');
+	$('.fixed-overlay').show();
+	$('.nsb-1-suggestbox').show();
+	$('#searchCity').focus();
+	$('.nsb-2-suggestbox').hide();
+	$('.nsb-2-suggestbox3').hide();
+}
+
+
+function submitForm() {
+	//If city is not selected then dont submit the search form
+	if ($('.nsb-2').val() == '' || $('.nsb-2').val() == null) {
+		var city = $('.nsb-1').val();
+		if (city == null || city == '') {
+			firstTBfocus();
+			return false;
+		}
+		//this is when user is doing a key word search and submit the form
+		if ($('#keyword').val() == '') {
+			$('#keyword').val($('.nsb-2').val());
+		}
+		$('#searchForm').submit();
+		return;
+	}else {
+		$('.nsb-2-suggestbox2').show();
+		firstTBfocus();
+		$('.nsb-1-suggestbox').hide();
+	}
+}
+
+function changeOnlineOption(city) {
+	if (city == 'Online Learning' || city == 'Online Services') {
+		$('.nsb-1').attr('value', 'Online Services');
+	}else {
+		$('.nsb-1').attr('value', city);
+		if (city) {
+			city = city.trim();
+		}
+		hideSearchSchoolForCities(city);
+	}
+}
+// This is a manifest file that'll be compiled into application.js.
+//
+//= require layout.searchBar.js
+//= require_self
+//
+

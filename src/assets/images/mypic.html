@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)https://www.urbanpro.com/register/uploadPhoto?from=profile -->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+	
+<!-- Host Name : prod-app-i-0d8c05ea7c450c3d7 -->
+<link rel="shortcut icon" href="https://c.urbanpro.com/assets/favicon-665c6c3ef9587f8ff29f1e9cee046acd.ico" type="image/x-icon">
+
+	<title>Upload Photo</title>
+	
+		
+        	<meta name="robots" content="noindex,follow">
+        
+	
+
+
+<!-- Google Tag Manager -->
+<script src="./mypic_files/502726253907729" async=""></script><script async="" src="./mypic_files/fbevents.js.download"></script><script type="text/javascript" async="" src="./mypic_files/bat.js.download"></script><script type="text/javascript" async="" src="./mypic_files/analytics.js.download"></script><script async="" src="./mypic_files/gtm.js.download"></script><script>
+		dataLayer = [{
+			'memberId' : '4154614',
+			'pageType' :'',
+			'gaTrackingId':'UA-23360071-1',
+			'sentryUniqueId':'f32064c4e6284eae867ad69f6802d52b',
+			'sentryEventId':'1503237'
+		}];
+		
+			(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+			})(window,document,'script','dataLayer','GTM-THK2CLG');
+		
+</script>
+	
+<!-- End Google Tag Manager -->
+
+	
+<script>
+function loadScriptAsync(src, callback, customAttrs)
+{
+var s,r,t;
+r = false;
+s = document.createElement('script');
+s.type = 'text/javascript';
+s.src = src;
+s.async = true;
+if ( customAttrs != undefined ) {
+  for (var key in customAttrs) {
+    if (customAttrs.hasOwnProperty(key)) { console.log("key::"+key+"@@@val::"+customAttrs[key])
+      s.setAttribute(key, customAttrs[key]);
+    }
+  }  
+}
+
+if ( !r && (!this.readyState || this.readyState == 'complete') )
+{
+  r = true;
+  //callback!='noCallBack'?callback():"";
+  callback != 'noCallBack' ? s.addEventListener('load', function (e) { callback(); }, false) : "";
+}
+t = document.getElementsByTagName('script')[0];
+t.parentNode.insertBefore(s, t);
+}
+</script>
+<script>
+function loadCSS( href, before, media ){
+  var doc = window.document;
+  var ss = doc.createElement( "link" );
+  var ref;
+  if( before ){
+    ref = before;
+  }
+  else {
+    var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+    ref = refs[ refs.length - 1];
+  }
+  var sheets = doc.styleSheets;
+  ss.rel = "stylesheet";
+  ss.href = href;
+  ss.media = "only x";
+  function ready( cb ){
+    if( doc.body ){
+      return cb();
+    }
+    setTimeout(function(){
+      ready( cb );
+    });
+  }
+  ready( function(){
+    ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+  });
+  var onloadcssdefined = function( cb ){
+    var resolvedHref = ss.href;
+    var i = sheets.length;
+    while( i-- ){
+      if( sheets[ i ].href === resolvedHref ){
+        return cb();
+      }
+    }
+    setTimeout(function() {
+      onloadcssdefined( cb );
+    });
+  };
+  function loadCB(){
+    if( ss.addEventListener ){
+      ss.removeEventListener( "load", loadCB );
+    }
+    ss.media = media || "all";
+    hidePageLoader();
+  }
+  if( ss.addEventListener ){
+    ss.addEventListener( "load", loadCB);
+  }
+  ss.onloadcssdefined = onloadcssdefined;
+  onloadcssdefined( loadCB );
+  return ss;
+};
+function hidePageLoader(){
+  setTimeout(function(){
+    document.getElementById('upPageLoader').classList.add( "fadeout" );
+  },400);
+  setTimeout(function(){
+    document.getElementById('upPageLoader').style.display='none';
+  },800)
+}
+</script>
+<style type="text/css">
+body {background-color: #EEE;overflow-x: hidden;margin: 0px;}
+.upPageLoader {position: fixed;z-index: 100000;background: rgba(255, 255, 255, 0.99);width: 100%;height: 100%;display: none;text-align: center;top: 0px;}
+.upPageLoaderContainer {position: absolute;margin: auto;top: 0px;bottom: 0px;left: 0px;right: 0px;width: 100px;height: 100px;}
+#upPageLoader.fadeout {-webkit-animation-duration: 1s;animation-duration: 1s;-webkit-animation-fill-mode: both;animation-fill-mode: both;-webkit-animation-name: fadeOut;animation-name: fadeOut;}       
+@-webkit-keyframes fadeOut {0% {opacity: 1;}100% {opacity: 0;}}
+@keyframes fadeOut {0% {opacity: 1;}100% {opacity: 0;}}
+.uploaderAnim {position: absolute;box-sizing: border-box;margin-top: 15px;border-radius: 5px;width: 100px;height: 2px;padding: 0px;background: #ccc;overflow: hidden;-webkit-transform: rotateY(0);transform: rotateY(0);transition: -webkit-transform .3s ease-in;transition: transform .3s ease-in;transition: transform .3s ease-in, -webkit-transform .3s ease-in;}
+.uploaderAnim:before {content: '';position: absolute;border-radius: 5px;width: 30px;height: 3px;left: 0;background: #0072FF;animation: animUploader 1.5s infinite ease-in-out;}
+@keyframes animUploader{
+0%, 100% {-webkit-transform: translate(-14px,0);transform: translate(-14px,0);}
+50% {-webkit-transform: translate(80px,0);transform: translate(80px,0);}}
+
+a,body,div,html,img,li,p,ul{font-size:100%;vertical-align:baseline;background-color:transparent;background-position:initial initial;background-repeat:initial initial}a,body,html{margin:0;padding:0}:focus,a{outline:0}body,div,html,img,li,p,ul{margin:0;padding:0;border:0;outline:#000}a{color:#0072ff;text-decoration:none}
+</style>
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="layout" content="urbanproMain">
+
+
+
+
+
+<link rel="stylesheet" href="./mypic_files/uploadProfilePhoto_module-cb8a56354f9d192867356061b93480cb.css">
+
+<style type="text/css">
+img#cropbox {
+    max-width: 100%;
+}
+</style>
+
+
+
+
+
+
+
+</head><body><div id="googleTrackingPixelTemplate">
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+    
+  
+
+  
+
+   
+
+  
+
+  
+  
+  
+  
+
+  
+  
+  
+  
+   
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+    
+
+    
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<script type="text/javascript">
+  window.dataLayer = window.dataLayer || []; 
+
+  
+  
+
+  
+
+  
+  function gaContentSearchStringTracking(type,contentSearchString){            
+        window.dataLayer.push({
+          'event': 'gaContentSearchStringTracking',
+          'gaContentSearchStringTrackingAction' : type,
+          'gaContentSearchStringTrackingLabel' : contentSearchString
+        });
+  }
+  
+  function gaSponsoredAdAndSearchTabTracking(actionNameStr,labelNameStr){
+        window.dataLayer.push({
+          'event': 'gaSponsoredAdAndSearchTabTracking',
+          'gaSponsoredAdAndSearchTabTrackingAction' : actionNameStr,
+          'gaSponsoredAdAndSearchTabTrackingLabel' : labelNameStr
+        });         
+  }
+
+  
+  
+
+  
+
+  
+
+  
+  
+    
+  
+
+
+  
+  
+  
+     
+  
+
+     
+  
+    
+        
+
+        
+
+        
+
+        
+
+        
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+    
+  
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+     
+   
+
+    
+
+    
+
+     
+</script>
+
+</div>
+<script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","502726253907729");fbq("set","agent","tmgoogletagmanager","502726253907729");fbq("track","PageView");</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=502726253907729&amp;ev=PageView&amp;noscript=1"></noscript>
+
+
+<script>
+	var googleTrackingId ='UA-23360071-1';
+
+	var deviceType="Desktop";
+</script>
+
+
+	<!-- Google Tag Manager (noscript) -->
+	
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THK2CLG"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+	<!-- End Google Tag Manager (noscript) -->
+
+	<div class="upPageLoader" id="upPageLoader">
+<div class="upPageLoaderContainer">
+<img src="./mypic_files/urbanpro_icon-b4d6ab605bfc175c7ad1b403cd2f6324.jpg" width="50">
+<div class="uploaderAnim"></div>
+</div>
+</div>
+	
+
+	<input type="hidden" id="seoPageInstanceForEditSeoContent" value="">
+
+	<div class="bodyContainer">
+		
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+
+	
+		<div class="dummyHeader">
+		</div>
+
+		<div class="newTopHeader">
+			<div class="topHeaderMarginWidth">
+
+				
+					
+
+	
+	
+		
+		<a href="https://www.urbanpro.com/" class="display-IB upLogo">
+			<img src="./mypic_files/urbanpro-logo-fa5b856a8b8a21c3fc4ea5f6880675e6.svg" width="164" alt="UrbanPro">
+			<span class="logo-menu-arrow"></span>
+		</a>
+	
+
+
+					
+				
+				
+					
+						
+
+
+<style type="text/css">
+.displayFlex{
+  display:flex;
+}
+.alignItem-center{
+  align-items: center;
+}
+</style>
+
+
+  
+    <div class="fixed-overlay"></div>
+    
+    
+
+    
+      
+  
+
+
+
+  <div class="headerRightContent headerRightAdaptWidth">
+    
+    
+      
+    
+    
+      
+        
+      
+      
+
+
+
+<ul class="headerRightNav" style="display: none;">
+ 
+
+<li class="member-links">
+	<a href="https://www.urbanpro.com/register/show?showProfile=true">
+		<span class="menu-name">Profile</span>
+	</a>
+</li>
+	
+	<li class="member-links">
+		<a href="https://www.urbanpro.com/register/preferences?_c=topNav"><span class="menu-name">Preferences</span></a>
+	</li>
+
+	
+<li class="member-links">
+	<a href="https://www.urbanpro.com/register/changePassword?_c=topNav"><span class="menu-name">Change Password</span></a>
+</li>
+
+
+
+
+<!-- Edit Seo Content Link Block -->
+
+<!-- Edit Seo Content Link Block End -->
+
+
+	
+
+	
+	
+		<li class="member-links">
+			<a href="https://www.urbanpro.com/register/privacySetting"><span class="menu-name">Privacy Preferences</span></a>
+		</li> 
+	
+
+
+
+		
+
+<li class="member-links">
+	<a href="https://www.urbanpro.com/logout/index"><span class="menu-name">Logout</span></a>
+</li>
+<li class="member-links">
+	
+	<a href="https://help.urbanpro.com/hc/en-us/categories/201786245-For-Tutors-Institutes"><span class="menu-name">Help Center</span></a>
+	
+</li>
+
+
+ 
+
+</ul>
+    
+  </div>
+
+  <div class="searchNcoinContainer  displayFlex alignItem-center">
+
+    
+    
+    
+      
+
+        
+        
+        
+          
+          <div class="noOfHoursTaught" id="noOfHoursTaught">
+              <a href="https://www.urbanpro.com/provider/providerHoursTaught" style="color:unset;">
+                <span id="noOfHours">0h</span>
+                <span><img src="./mypic_files/LiveIcon-17fc2e41009b0beca56d7ec7061909fd.png"></span>
+              </a>
+          </div>
+        
+        
+
+        
+
+
+
+
+
+	
+
+
+<div class="coinsCount rightAlignNoHam">
+
+	
+	
+	
+	
+			
+				
+				
+				
+				
+				
+					
+					
+					
+						
+							<a href="https://www.urbanpro.com/provider/makePayment" class="linkBlueTxt">UPGRADE</a>
+						
+					
+					                        
+				
+				
+	
+	
+
+</div>
+      
+    
+    
+
+    
+  </div>
+
+
+					
+				
+			</div>
+		</div>
+
+		
+		
+	
+
+
+<div class="clearfix clearLeft" style="width:100% !important;">
+
+		
+		<div class=" fullWidthPageMarginContainer  clearfix">
+
+			<div class="">
+
+			
+			
+
+			<!-- body: BEGIN -->
+			
+<input type="hidden" class="activeMenu" value="profileInfoMenu">
+<div class="full_container">
+    <div class="left_menu_panel mt-10 only-for-big">
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="nav_anchor"></div>
+<div class="nav_menu shadow_box mb-5">
+	<div id="navigation" class="navigate">
+<div>
+
+
+
+
+         
+
+			
+				
+					
+				
+	        
+
+      		
+	        
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="profileImg shdwBlock">
+	<div class="profileContentholder navContentHolder" style="background: #fff;">
+		<div class="profileContLftContent pos-rel">
+	        <div class="navBarImgholder">
+    			
+    			  	
+    					<a href="https://www.urbanpro.com/register/uploadPhoto?from=profile">
+					  		
+	<img src="./mypic_files/4154614-medium130.jpg" alt="">
+
+                    	</a>
+
+               		
+					
+				
+	    	</div>
+	    </div>
+      	
+    	<div class="profileContRgtContent pos-rel">
+    		
+    		<h4 class="fontSize14 color333">Divyashikha</h4>
+    		<p class="linksOngreenFooter">
+    			
+					
+		    		
+					
+						<a href="https://www.urbanpro.com/provider/makePayment" style="text-decoration: none;color: #505050 !important;"> Upgrade </a>
+					
+		    	
+		    </p>
+    		<p class="profileRightBtmContent pos-rel">
+    			
+    				<a href="https://www.urbanpro.com/register/standOutDetails" class="no-href-color">
+		    			<span class="providerRank">
+			    			<img src="./mypic_files/up_rank-9267401e2220b92d51a25f6f17d4b8f7.png">
+		    			</span>
+		    			<span class="fontSize12">3156</span>
+	    			</a>
+	    		
+    			
+    				<a href="https://www.urbanpro.com/register/proScoreLog?id=4199025">
+    					<span class="scoreBlock pointer" style="background-color: #1ca552">4.3</span>
+    				</a>
+    			
+    		</p>
+    	</div>
+    </div>
+</div>
+
+    	
+
+	<div id="menu_nav" class="shdwBlock" style="margin-top: 0!important;">
+		<ul>
+			
+			
+				
+			
+			<li class="nonactive">
+				<a href="https://www.urbanpro.com/register/myAccount" class="no-href-color">
+					<h3><span class="menuIcon icon-ic-dashboard-24-px"></span>Dashboard
+					</h3>
+				</a>
+			</li>
+
+			
+			<!-- removed the condition for calendar -->			
+			
+				
+			 
+			<li class="nonactive courseCalendarMenu" id="courseCalendar">
+				<a href="https://www.urbanpro.com/course2/calendar">
+				<h3 class="pos-rel"><span class="menuIcon icon-ic-cal"></span>Calendar</h3></a>
+			</li>						
+
+			
+			
+				
+			
+			<li class="nonactive">
+				<a href="https://www.urbanpro.com/provider/insights" class="no-href-color">
+					<h3><span class="menuIcon insightsMenuIcon"></span>Insights</h3>
+				</a>
+			</li>
+
+			
+			
+				
+			
+
+			<li class="active">
+				<h3 class="pos-rel" id="profileTab"><span class="menuIcon icon-ic-profile-24-px"></span>Profile</h3>
+				<ul>
+					<a href="https://www.urbanpro.com/newProvider/profileInformation"><li class="profileInfoMenu active"><span class="menuIcon icon-ic-billing-history-24-px"></span>Profile Information</li></a>
+					
+						<a href="https://www.urbanpro.com/branch/showCategories?providerId=1131964"><li class="nonactive profileClassConducted"><span class="menuIcon icon icon-classes-conducted0"></span>Classes Conducted</li></a>
+					
+					<a href="https://www.urbanpro.com/newProvider/branchPricingInfo"><li class="nonactive pricingMenu pos-rel"><span class="menuIcon icon-request-a-payment0"></span>Pricing<span class="newInnerTagSup ml-5" style="display: inline-block;">NEW</span></li></a>
+
+					<a href="https://www.urbanpro.com/providerRecommendation/branchReviewCount"><li class="nonactive profileInviteMenu pos-rel"><span class="menuIcon icon-ic-invite-reviews-24-px"></span>Reviews <span class="new-tag none reviewCountMenu" id="reviewCount"></span></li>
+					</a>
+					
+						<a href="https://www.urbanpro.com/register/standOutDetails" class="no-href-color"><li class="nonactive standOut pos-rel"><span class="menuIcon icon-ic-stand-out-24-px-copy"></span>Stand Out</li>
+						</a>
+					
+
+					<a href="https://www.urbanpro.com/provider/promote">
+						<li class="pos-rel nonactive profilePromoteMenu"><span class="menuIcon icon-ic-promote-profile-24-px"></span>Promote</li>
+					</a>
+				</ul>
+			</li>
+
+			
+			
+			
+				
+			
+			<li class="nonactive">
+				<h3><span class="menuIcon icon-ic-courses-24-px-copy"></span>Courses</h3>
+				<ul>
+					<a href="https://www.urbanpro.com/course2/list"><li id="courseCreated" class="courseCWMenu"><span class="menuIcon icon-class-and-workshop"></span>Courses</li></a>
+					<a href="https://www.urbanpro.com/courseBatch/batchList"><li id="courseCreated" class="courseBatchMenu"><span class="menuIcon icon-batch"></span>Batches</li></a>
+					<a href="https://www.urbanpro.com/assessment/myAssessmentlist" class="trackAssessments" data-track="assessments">
+						<li class="nonactive assessment pos-rel">
+							<span class="menuIcon icon-assessment">
+								
+							</span>Assessments
+						</li>
+					</a>
+
+					<a href="https://www.urbanpro.com/course2/settings"><li class="courseSetting"><span class="menuIcon icon-settings"></span>Settings</li></a>
+
+					<a href="https://www.urbanpro.com/course2/studentCourseList"><li class="coursesEnrolled"><span><img src="./mypic_files/courses_enrolled-413a72532c66fca804347cfb49a79adb.svg" style="height:22px;width:40px;vertical-align: -5px;margin-right: 12px;"></span>Courses Enrolled</li></a>
+				</ul>
+			</li>
+		
+			
+			
+				
+			 
+			<li class="nonactive">
+				<a href="https://www.urbanpro.com/comment/myRecentQuestionPage"><h3 class="pos-rel"><span class="menuIcon icon-ic-coins-grey-24px"></span>Earn Free Coins<span class="newTagSup ml-5" style="display: none;">NEW</span></h3></a>
+			</li>
+
+			
+			
+				
+			
+
+			<li class="nonactive">
+
+				<h3 class="pos-rel communityTab showTags"><span class="menuIcon icon-community0"></span><span class="community-tab-count">Community <span class="new-tag new-tag-for-parent none menuTagParent" id="parentCountWeb" data-tag="count"></span></span></h3>
+				<ul>
+					<a href="https://www.urbanpro.com/newProvider/myUpdates"><li class="nonactive pos-rel communityUpdatesMenu"><span class="menuIcon icon-ic-my-requirements-24-px"></span>Updates</li></a>
+
+					<a href="https://www.urbanpro.com/newProvider/myAnswers"><li class="nonactive pos-rel communityAnswerMenu"><span class="menuIcon icon-icon-course"></span>My Answers</li></a>
+
+					<a href="https://www.urbanpro.com/comment/listLearningTip"><li class="nonactive communityPostLessonMenu"><span class="menuIcon icon-ic-post-a-learning-tip"></span>My Lessons</li></a>
+
+					<a href="https://www.urbanpro.com/register/myFollowingInfo"><li class="nonactive pos-rel communityFollowingMenu"><span class="menuIcon icon-ic-accounts-24-px"></span>Following</li></a>
+
+					<a href="https://www.urbanpro.com/newProvider/myFollowers"><li class="nonactive pos-rel communityFollowersMenu"><span class="menuIcon icon-group"></span>Followers</li></a>
+
+					<a href="https://www.urbanpro.com/comment/bookmarkList">
+					<li class="nonactive communityBookmark">
+						<span class="menuIcon">
+							<img src="./mypic_files/menu-bookmark-de6cecba454de0b4d1b13a440baf16e7.svg" alt="Bookmark" style="width: 17px;">
+						</span>Bookmarks
+					</li>
+					</a>
+
+					<a href="https://www.urbanpro.com/success-stories">
+					<li class="nonactive">
+						<span class="menuIcon icon-ic-promote-profile-24-px"></span>Success Stories
+					</li>
+					</a>
+
+					<a href="https://www.urbanpro.com/register/referFriends"><li class="nonactive communityReferFrndMenu"><span class="menuIcon icon-ic-invite-friends-24-px"></span>Invite Friends</li>
+					</a>
+
+					
+
+					<a href="https://www.urbanpro.com/worksheets" target="_blank"><li class="nonactive"><span class="menuIcon icon-ic-course-enrolled-24-px fontSize17"></span>Worksheets</li></a>
+				</ul>
+			</li>
+			
+			
+			
+
+
+			
+			
+				
+					
+				
+				<li class="nonactive">
+					<a href="https://www.urbanpro.com/need/list" class="no-href-color">
+						<h3><span class="menuIcon icon-ic-my-requirements-24-px" style="margin-left: 7px"></span>Find Tutor or Class</h3>
+					</a>
+				</li>
+			
+
+			
+				
+			
+
+			
+			
+				
+			
+			<li class="nonactive">
+				<h3><span class="menuIcon icon-ic-accounts-24-px"></span>Account</h3>
+				<ul>
+					<a href="https://www.urbanpro.com/billing/history">
+							<li class="nonactive accBillingMenu"><span class="menuIcon icon-ic-billing-history-24-px"></span>Billing History</li>
+					</a>
+					
+						<a href="https://www.urbanpro.com/billing/coinsHistory">
+							<li class="nonactive accCoinHistoryMenu"><span class="menuIcon icon-0"></span>Coins History</li>
+						</a>
+					
+					
+						<a href="https://www.urbanpro.com/register/myMembership">
+							<li class="nonactive accMembershipMenu"><span class="menuIcon icon-ic-subscription-24-px"></span>My Membership</li>
+						</a>
+					
+					
+					<a href="https://www.urbanpro.com/register/settings?_c=leftNav">
+							<li class="nonactive accPasswordMenu"><span class="menuIcon icon-settings"></span>Settings</li>
+					</a>
+				</ul>
+			</li>
+
+			
+			
+				
+			
+			<li class="nonactive">
+				<a class="no-href-color" href="https://www.urbanpro.com/logout/index">
+					<h3><span class="menuIcon icon-ic-logout-24-px"></span>Logout</h3>
+				</a>
+			</li>
+
+			
+			
+				
+			
+			<li class="nonactive">
+				<a class="no-href-color" href="https://www.urbanpro.com/general/helpCenter">
+					<h3><span class="menuIcon icon-ic-help-2-24-px"></span>Help Center</h3>
+				</a>
+			</li>
+
+			
+			
+		</ul>
+	</div>
+</div>
+</div>
+
+<div class="nav_anchor_bottom"></div>
+</div>
+        
+    </div>
+
+    <div class="pageContainer shadowDiv pos-rel">
+        <div class="greyHeader">
+            <span class="back_btn inline-block marginRit10 hideSmall-950"><img src="./mypic_files/Arrow-Circle-left-2dd4928f3479b4dee04791bd4e4cc3b5.png" class="float-left back-history cursorHand"></span>
+            <div class="inline-block">
+            <p class="pageHeading">
+                Profile Photo
+            </p>
+            <p class="pageSubHeading">
+                
+                
+                    Please upload a good quality, professional and smiling picture of yours.
+                
+                
+            </p>
+            </div>
+        </div>
+        <div class="pageContentContainer grid-item">
+            <p class="pageContentTitle  ">
+            
+                
+                    
+                        Having a profile picture, increases your chances of getting hired by 10 times. Upload a front-facing picture now.
+                    
+                
+            
+            </p>
+
+            <div>
+                
+                
+                
+
+                <div class="none">
+                <form action="https://www.urbanpro.com/register/index" method="post" class="uploadForm" enctype="multipart/form-data">
+                    <div class="textAlignCen">
+                        <img src="./mypic_files/profilePhoto_placeholder-d9efc4c8dfff0d644f650bdfbba81654.png" class="photoUploadPlaceholder"><br>
+                        <input type="hidden" name="from" class="from" value="profile">
+                        <input type="hidden" name="_at" value="p92QTPvF8vRahfLvfeBPdx_mUmzQGgU1qXj5yPItVTI._20201006115702_4154614">
+                        <input type="hidden" class="fileSize" value="10">
+                        <input type="button" class="primaryButton mt-10 selectPhoto" value="UPLOAD NEW PHOTO"><br>
+                        <p class="fileErrorMsg none errorMsg mt-10"></p>
+                        <p class="fontSize12 mb-10 mt-5 color666">Photo size should be at least 100px wide and up to 10MB. Photo format supported are .jpg, .png, .gif and .bmp</p>
+                    </div>
+                </form>
+                </div>
+
+
+                <div class="cropPhotoContainer mt-20 ">
+
+                    <div class="border">
+                        <img src="./mypic_files/4154614-large.jpg" alt="Divyashikha&#39;s image" id="cropbox" style="display: none; visibility: hidden; width: 450px; height: 600px;"><div class="jcrop-holder" style="width: 450px; height: 600px; position: relative; background-color: rgb(0, 0, 0);"><div style="position: absolute; z-index: 600; width: 0px; height: 0px; top: 262.4px; left: 328.85px; display: none;"><div style="width: 100%; height: 100%; z-index: 310; position: absolute; overflow: hidden;"><img src="./mypic_files/4154614-large.jpg" style="border: none; visibility: visible; margin: 0px; padding: 0px; position: absolute; top: -262.4px; left: -328.85px; width: 450px; height: 600px;"><div class="jcrop-hline" style="position: absolute; opacity: 0.4;"></div><div class="jcrop-hline bottom" style="position: absolute; opacity: 0.4;"></div><div class="jcrop-vline right" style="position: absolute; opacity: 0.4;"></div><div class="jcrop-vline" style="position: absolute; opacity: 0.4;"></div><div class="jcrop-tracker" style="cursor: move; position: absolute; z-index: 360;"></div></div><div style="width: 100%; height: 100%; z-index: 320; display: none;"><div class="ord-n jcrop-dragbar" style="cursor: n-resize; position: absolute; z-index: 370;"></div><div class="ord-s jcrop-dragbar" style="cursor: s-resize; position: absolute; z-index: 371;"></div><div class="ord-e jcrop-dragbar" style="cursor: e-resize; position: absolute; z-index: 372;"></div><div class="ord-w jcrop-dragbar" style="cursor: w-resize; position: absolute; z-index: 373;"></div><div class="ord-n jcrop-handle" style="cursor: n-resize; position: absolute; z-index: 374; opacity: 0.5; width: 7px; height: 7px;"></div><div class="ord-s jcrop-handle" style="cursor: s-resize; position: absolute; z-index: 375; opacity: 0.5; width: 7px; height: 7px;"></div><div class="ord-e jcrop-handle" style="cursor: e-resize; position: absolute; z-index: 376; opacity: 0.5; width: 7px; height: 7px;"></div><div class="ord-w jcrop-handle" style="cursor: w-resize; position: absolute; z-index: 377; opacity: 0.5; width: 7px; height: 7px;"></div><div class="ord-nw jcrop-handle" style="cursor: nw-resize; position: absolute; z-index: 378; opacity: 0.5; width: 7px; height: 7px;"></div><div class="ord-ne jcrop-handle" style="cursor: ne-resize; position: absolute; z-index: 379; opacity: 0.5; width: 7px; height: 7px;"></div><div class="ord-se jcrop-handle" style="cursor: se-resize; position: absolute; z-index: 380; opacity: 0.5; width: 7px; height: 7px;"></div><div class="ord-sw jcrop-handle" style="cursor: sw-resize; position: absolute; z-index: 381; opacity: 0.5; width: 7px; height: 7px;"></div></div></div><div class="jcrop-tracker" style="width: 454px; height: 604px; position: absolute; top: -2px; left: -2px; z-index: 290; cursor: crosshair;"></div><input type="radio" style="position: fixed; left: -120px; width: 12px; display: none;"><img src="./mypic_files/4154614-large.jpg" alt="Divyashikha&#39;s image" style="display: block; visibility: visible; width: 450px; height: 600px; border: none; margin: 0px; padding: 0px; position: absolute; top: 0px; left: 0px; opacity: 1;"></div>
+                    </div>
+                    
+                    <span class="mt-20 loud display-IB blueColor selectPhoto pointer">Change Photo</span>
+                    
+                    <br>
+                    <div id="error" class="errorMsg pos-rel none" style="position:relative">
+                        
+                            Warning: The picture you uploaded is too small to crop. Either upload a bigger picture or save this one.
+                        
+                    </div>
+                    <p class="fileErrorMsg none errorMsg"></p>
+                    <p class="fontSize12 mb-10 mt-5 color666">Photo size should be at least 100px wide and up to 10MB. Photo format supported are .jpg, .png, .gif and .bmp</p>
+                    <div id="cropForm">
+                        <form action="https://www.urbanpro.com/memberPhoto/saveCropedImage" method="post" enctype="multipart/form-data" onsubmit="return checkCoords();">
+                            
+                                <input type="hidden" name="_at" value="p92QTPvF8vRahfLvfeBPdx_mUmzQGgU1qXj5yPItVTI._20201006115702_4154614">
+                            
+                            <input type="hidden" name="id" value="4154614">
+                            <input type="hidden" name="from" value="profile">
+                            <input type="hidden" id="x" name="xAxis" value="0">
+                            <input type="hidden" id="y" name="yAxis" value="0">
+                            <input type="hidden" id="w" name="width" value="450">
+                            <input type="hidden" id="h" name="height" value="450">
+                            <input type="hidden" id="originalWidth" name="originalWidth">
+                            <input type="hidden" id="originalHeight" name="originalHeight">
+                            <input type="hidden" id="convertedWidth" name="convertedWidth">
+                            <input type="hidden" id="convertedHeight" name="convertedHeight">
+                            <input type="hidden" name="cropImage" class="cropImage" value="true">
+                            <input type="hidden" name="needId" value="">
+                            <input type="hidden" name="uploadNeeded" class="uploadNeeded" value="false">
+                            <input type="file" name="photo" size="40" class="none chooseFileButton" id="uploadFile">
+                            <div>
+                            <span><input type="submit" class="primaryButton savePhoto " value="Save"></span>
+                            <a href="https://www.urbanpro.com/memberPhoto/cancel?id=4154614&amp;from=profile" class="tertiaryButton cancelPhoto textAlignCen">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            
+                
+<div class="uploadPhotoBenefits">
+    <ul>
+        
+            
+                <p class="pageContentTitle loud">Profile Photo Acceptance Guidelines</p>
+                <li>Must be your front facing Photo. Side facing photo is not accepted.</li>
+                <li>Must be a good quality photo. Blurred photo is not accepted.</li>
+                <li>Make sure you don't have a contact number, or any text on your Photo.</li>
+            
+        
+    </ul>
+</div>
+            
+        </div>
+    </div>
+    
+        <script type="text/javascript">
+            var type='INDIVIDUAL'
+        </script>
+    
+    <script type="text/javascript" src="./mypic_files/uploadProfilePhoto_module-b1fd47d4d16e2b90927d89a576b28248.js.download"></script>
+    
+			<!-- body: END -->
+		</div>
+	</div>
+	
+		
+
+
+</div>
+
+
+
+
+
+
+ 
+
+
+
+
+	
+    	
+    		
+    		<div class="footernew footerhorizontal">
+				      <ul class="footermenuhori">
+		        	<li class="hide-for-small-only">
+		        		
+		        			<a href="https://www.urbanpro.com/about">About UrbanPro.com</a>
+		        		
+		        	</li>
+		        	<li class="terms-no-border">
+		        		
+		        			<a href="https://www.urbanpro.com/terms-of-use">Terms of Use</a>
+		        		
+		        	</li>
+		        	<li class="hide-for-small-only">
+		        		
+		        			<a href="https://www.urbanpro.com/privacy-policy">Privacy Policy</a>
+		        		
+		        	</li>
+		        	<li class="onlybig">
+		        	
+		        		
+		        			<a href="https://www.urbanpro.com/blog" class="hide-for-small-only">Articles</a>
+		        		
+		        	
+		        	</li>
+		        	<li class="onlybig successStoryFooterLink">
+		        		
+		        			<a href="https://www.urbanpro.com/success-stories">Success Stories</a>
+		        		
+		        	</li>
+		        	<li class="hide-for-small-only customerServiceFooterLink no-border"><a href="https://help.urbanpro.com/" target="_blank">Customer Service</a></li>
+		        </ul>
+		        <div class="footer-copyright-social clearfix">
+		        <div class="footer-copyright">ThinkVidya Learning Pvt Ltd © 2010-2020 All Rights Reserved</div>
+
+        		
+              	<ul class="footer-social" itemscope="" itemtype="http://schema.org/Organization">
+      <span itemprop="name" class="none">UrbanPro</span>
+      <link itemprop="url" href="https://www.urbanpro.com/">
+      <img itemprop="logo" class="none" src="./mypic_files/sharing_job.png">
+      
+      
+            
+            
+                  
+                  
+                        
+                  
+            <li class="playStoreDeskTop"><a href="https://play.google.com/store/apps/details?id=com.urbanpro.providerApp" target="_blank"><img width="70px" class="playStore-redirect" src="./mypic_files/download_play_store-1e7efdcdfb318f2b6c934a174d66ba55.png" alt="Play Store"></a></li>
+            
+            <li><a itemprop="sameAs" href="https://www.facebook.com/UrbanProApp" target="_blank">
+                  <span class="icon-facebook-square"></span></a></li>
+            <li><a itemprop="sameAs" href="https://twitter.com/urbanproapp" target="_blank">
+                  <span class="icon-twitter"></span></a>
+            </li>                
+      
+            
+</ul>
+
+
+
+<div class="playStoreMobile" style="display: block;"><a href="https://play.google.com/store/apps/details?id=com.urbanpro.providerApp" target="_blank"><img width="70px" class="playStore-redirect" src="./mypic_files/download_play_store-1e7efdcdfb318f2b6c934a174d66ba55.png" alt="Play Store"></a></div>
+
+
+
+
+				</div>
+				</div>
+			</div>
+    	
+	
+
+
+
+
+	<div class="liveEventLaunch none" style="display: none;">
+	  <div class="eventLaunchBlock none textAlignCen">
+	    <p class="loud mb-10">Class is scheduled to start now</p>
+	    <a href="javascript:void(0);" target="_blank" class="primaryButton display-IB">
+      Launch Class
+      </a>
+	  </div>
+	  <div class="eventTimerBlock none">
+	    <p class="loud mb-10">Live Class will begin in</p>
+	    <div class="timerContainer">
+	      <div>
+	        <span class="timerHours">00</span>
+	        Hours
+	      </div>
+	      <div>
+	        <span class="timerMinutes">00</span>
+	        Minutes
+	      </div>
+	      <div>
+	        <span class="timerSeconds">00</span>
+	        Seconds
+	      </div>
+	    </div>
+	    
+		    <p class="textAlignCen mt-10">
+		    	<a href="https://www.urbanpro.com/register/uploadPhoto?from=profile" class="presenterUrlLink" value="LAUNCH CLASS" target="_blank">LAUNCH CLASS</a>
+		    </p>
+		
+		 
+	  </div>
+	</div>
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+	var userAgent = window.navigator.userAgent
+    if(/iPad|iPhone|iPod/.test(userAgent))
+    	$(".playStoreMobile").hide();
+    else
+    	$(".playStoreMobile").show();
+});
+</script>
+
+
+
+	
+	
+ <div class="d-cont-foot" style="text-decoration:none !important;">
+ 
+    
+    
+    
+    
+    
+	
+	
+	
+    
+	 
+	</div>
+	
+	
+	
+		
+			<script type="text/javascript" src="./mypic_files/urbanproMainWithLocalitySearch_module-0af5838c5c8d9f8fec47b9ffa8dc6024.js.download"></script>
+		
+	
+
+
+	
+	
+	
+	
+
+
+
+
+
+
+	<!-- This javascript variable(global scope) is declared for need-topic-auto-suggest for cdn -->
+	
+	<div id="googleTrackingPixelTemplate">
+  
+
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || []; 
+    var params = (new URL(document.location)).searchParams;
+var urlRefValue = params.get('_r');
+var cookieRefVal = getCookie('referrer');
+
+if((urlRefValue!=undefined) && (cookieRefVal!=undefined)){
+  if(((urlRefValue.indexOf('partner')>-1) && (urlRefValue.indexOf('facebook')>-1)) || ((cookieRefVal.indexOf('partner')>-1) && (cookieRefVal.indexOf('facebook')>-1))){
+      window.dataLayer.push({
+         'event':'facebookPixel',
+         'fbEventFired':'true'
+      });
+  }
+}
+else if(urlRefValue!=undefined){
+  if((urlRefValue.indexOf('partner')>-1) && (urlRefValue.indexOf('facebook')>-1)){
+      window.dataLayer.push({
+         'event':'facebookPixel',
+         'fbEventFired':'true'
+      });
+  }
+}
+else{
+  if((cookieRefVal.indexOf('partner')>-1) && (cookieRefVal.indexOf('facebook')>-1)){
+      window.dataLayer.push({
+         'event':'facebookPixel',
+         'fbEventFired':'true'
+      });
+  }
+}
+
+function getCookie(name) {
+    var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+    return v ? v[2] : null;
+}
+  </script>
+</div>
+
+	<script type="text/javascript">
+		edgeSeverurl = 'https://c.urbanpro.com/';
+		enableCDNAutoSuggest = 'true';
+	</script>
+
+
+
+</div><div style="width:0px; height:0px; display:none; visibility:hidden;" id="batBeacon0.07379056163523612"><img style="width:0px; height:0px; display:none; visibility:hidden;" id="batBeacon0.34565411945101454" width="0" height="0" alt="" src="./mypic_files/0"></div><script type="text/javascript" id="" src="./mypic_files/bundle.min.js.download"></script>
+<script type="text/javascript" id="">Sentry.init({dsn:"https://f32064c4e6284eae867ad69f6802d52b@sentry.io/1503237"});Sentry.configureScope(function(a){a.setUser({id:google_tag_manager["GTM-THK2CLG"].macro(5)})});</script></body></html>

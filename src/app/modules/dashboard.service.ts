@@ -30,32 +30,32 @@ export class DashboardService {
     return [71, 78, 39, 66];
   }
 
-  pieChart() {
+pieChart() {
     return [{
-      name: 'Chrome',
+      name: 'Lab',
       y: 61.41,
       sliced: true,
       selected: true
     }, {
-      name: 'Internet Explorer',
+      name: 'Pug',
       y: 11.84
     }, {
-      name: 'Firefox',
+      name: 'Bulldog',
       y: 10.85
     }, {
-      name: 'Edge',
+      name: 'Beagle',
       y: 4.67
     }, {
-      name: 'Safari',
+      name: 'Irish Setter',
       y: 4.18
     }, {
-      name: 'Sogou Explorer',
+      name: 'Chow Chow',
       y: 1.64
     }, {
-      name: 'Opera',
+      name: 'Sheltie',
       y: 1.6
     }, {
-      name: 'QQ',
+      name: 'Pit Bull',
       y: 1.2
     }, {
       name: 'Other',

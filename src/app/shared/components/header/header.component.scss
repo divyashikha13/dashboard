@@ -1,6 +1,6 @@
-mat-toolbar-row
+.mat-toolbar-row
 {
-  background-color:#00acc1;
+  background-color:rgb(71, 68, 68);;
   border: none;
   color: white;
 }
@@ -13,11 +13,13 @@ mat-icon{
 }
 ul li {
     list-style: none;
+    .mat-search-bar{
+      z-index: 500;
+      padding-top: 50px;
+      text-align: center;
+    }
   }
-ul li .mat-search-bar{
 
-  align-items: flex-end;
-  vertical-align: middle;
-}
+
 
   
